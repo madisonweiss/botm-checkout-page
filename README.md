@@ -69,7 +69,7 @@ mock-api.ts                Dev-only mock of POST /api/checkout
 **Tax is mocked.** The spec doesn't mention tax or shipping at all, so I went with NYC's
 8.875% combined rate to have something realistic on screen. Shipping shows as free. A real backend would obviously own this calculation, not the client.
 
-**The promo code is mocked on the client.** The code and discount are hard-coded in `CheckoutPage.tsx`, and the code isn't sent with the order, since the spec's request body only has `bookIds`.IIn a real version the server would validate the code and apply the discount itself.
+**The promo code is mocked on the client.** The code and discount are hard-coded in `CheckoutPage.tsx`, and the code isn't sent with the order, since the spec's request body only has `bookIds`. In a real version the server would validate the code and apply the discount itself.
 
 **Every failure becomes a `CheckoutError` with a message that's safe to show the user.** This covers network errors, timeouts, non-JSON responses and error responses from the API.
 

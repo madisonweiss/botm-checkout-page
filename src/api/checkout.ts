@@ -6,7 +6,7 @@ const TIMEOUT_MS = 15000
 export class CheckoutError extends Error {}
 
 // Places a user's order. Covers potential errors like request timeout, network 
-// failure, invalid response body, unsucessful status. 
+// failure, invalid response body, unsuccessful status. 
 export async function placeOrder(bookIds: string[]): Promise<CheckoutSuccessResponse> {
   let response: Response
 
@@ -22,7 +22,7 @@ export async function placeOrder(bookIds: string[]): Promise<CheckoutSuccessResp
     if (err instanceof DOMException && err.name === 'TimeoutError') {
       // Assumption: In production, a confirmation email would be sent to the user. 
       // In the case of a timeout error, the order still may have gone through.
-      // Therefore, we should reccommended the user to check their email
+      // Therefore, we should recommend the user to check their email
       // to prevent placing the order again. 
       throw new CheckoutError(
         'This is taking longer than expected. Please check your email for confirmation before trying again.',
